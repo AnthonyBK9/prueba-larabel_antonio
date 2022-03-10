@@ -2,21 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GrupoController;
+use App\Http\Controllers\MessageController;
 
-$proyectos = [
-    ['title' => 'Proyecto1'],
-    ['title' => 'Proyecto2'],
-    ['title' => 'Proyecto3'],
-    ['title' => 'Proyecto4'],
+// $proyectos = [
+//     ['title' => 'Proyecto1'],
+//     ['title' => 'Proyecto2'],
+//     ['title' => 'Proyecto3'],
+//     ['title' => 'Proyecto4'],
 
-];
-$nombre = 'Antonio';
+// ];
+// $nombre = 'Antonio';
 
-Route::view('/', 'home', compact('proyectos'))->name('home');
+Route::view('/', 'home')->name('home');
 Route::view('contacto', 'contact')->name('contact');
 Route::view('nosotros', 'about')->name('about');
 Route::resource('grupos', GrupoController::class);
 
+Route::post('contacto',[MessageController::class, 'send'])->name('contacto.send');
 
 
 
